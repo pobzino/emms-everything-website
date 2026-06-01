@@ -406,29 +406,170 @@ function App() {
             <h2>Shop by mood, room, or scent.</h2>
           </div>
 
-          <div className="collection-grid">
-            <a href="#shop" className="collection-tile tall reveal">
-              <img
-                src={imagePath("images/blue-camo-bedding.jpeg")}
-                alt="Blue bedding set"
-              />
-              <span>Bedroom refresh</span>
-            </a>
-            <a href="#shop" className="collection-tile reveal">
-              <img
-                src={imagePath("images/al-dargam-perfumes.jpeg")}
-                alt="Perfume collection"
-              />
-              <span>Signature scents</span>
-            </a>
-            <a href="#shop" className="collection-tile reveal">
-              <img
-                src={imagePath("images/riggs-body-sprays.jpeg")}
-                alt="Body spray collection"
-              />
-              <span>Daily freshness</span>
-            </a>
+          <div className="section-option-bar reveal" aria-label="Section 2 layout options">
+            <span>Section 2 options</span>
+            <div>
+              {collectionOptions.map((option) => (
+                <button
+                  key={option.id}
+                  className={activeCollection === option.id ? "active" : ""}
+                  type="button"
+                  onClick={() => setActiveCollection(option.id)}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
           </div>
+
+          {activeCollection === "editorial" && (
+            <div className="collection-grid collection-layout-editorial">
+              <a href="#shop" className="collection-tile tall reveal">
+                <img
+                  src={imagePath("images/blue-camo-bedding.jpeg")}
+                  alt="Blue bedding set"
+                />
+                <span>Bedroom refresh</span>
+              </a>
+              <a href="#shop" className="collection-tile reveal">
+                <img
+                  src={imagePath("images/al-dargam-perfumes.jpeg")}
+                  alt="Perfume collection"
+                />
+                <span>Signature scents</span>
+              </a>
+              <a href="#shop" className="collection-tile reveal">
+                <img
+                  src={imagePath("images/riggs-body-sprays.jpeg")}
+                  alt="Body spray collection"
+                />
+                <span>Daily freshness</span>
+              </a>
+            </div>
+          )}
+
+          {activeCollection === "strip" && (
+            <div className="collection-strip-grid">
+              <a href="#shop" className="collection-strip-card reveal">
+                <img
+                  src={imagePath("images/gold-leaf-bedding.jpeg")}
+                  alt="Gold leaf bedding"
+                />
+                <span>Elegant bedding</span>
+              </a>
+              <a href="#shop" className="collection-strip-card reveal">
+                <img
+                  src={imagePath("images/al-dargam-perfumes.jpeg")}
+                  alt="Perfume collection"
+                />
+                <span>Signature scents</span>
+              </a>
+              <a href="#shop" className="collection-strip-card reveal">
+                <img
+                  src={imagePath("images/riggs-body-sprays.jpeg")}
+                  alt="Body spray collection"
+                />
+                <span>Body sprays</span>
+              </a>
+              <a href="#shop" className="collection-strip-card reveal">
+                <img
+                  src={imagePath("images/monochrome-bedding.jpeg")}
+                  alt="Monochrome bedding"
+                />
+                <span>Classic sets</span>
+              </a>
+            </div>
+          )}
+
+          {activeCollection === "magazine" && (
+            <div className="collection-magazine-grid">
+              <div className="collection-magazine-copy reveal">
+                <span className="eyebrow">
+                  <Sparkles size={16} /> Curated edits
+                </span>
+                <h3>Three quick ways to shop Emm's Everything.</h3>
+                <p>
+                  Start with the room, the fragrance shelf, or a simple everyday
+                  refresh.
+                </p>
+              </div>
+              <a href="#shop" className="collection-magazine-card large reveal">
+                <img
+                  src={imagePath("images/slate-geometry-bedding.jpeg")}
+                  alt="Slate geometry bedding"
+                />
+                <span>Room refresh</span>
+              </a>
+              <a href="#shop" className="collection-magazine-card reveal">
+                <img
+                  src={imagePath("images/al-dargam-perfumes.jpeg")}
+                  alt="Perfume collection"
+                />
+                <span>Scent shelf</span>
+              </a>
+              <a href="#shop" className="collection-magazine-card reveal">
+                <img
+                  src={imagePath("images/riggs-body-sprays.jpeg")}
+                  alt="Body sprays"
+                />
+                <span>Daily picks</span>
+              </a>
+            </div>
+          )}
+
+          {activeCollection === "panels" && (
+            <div className="collection-panel-grid">
+              <a href="#shop" className="collection-panel-card reveal">
+                <img
+                  src={imagePath("images/blue-camo-bedding.jpeg")}
+                  alt="Blue camo bedding"
+                />
+                <span>Bedroom refresh</span>
+              </a>
+              <a href="#shop" className="collection-panel-card reveal">
+                <img
+                  src={imagePath("images/al-dargam-perfumes.jpeg")}
+                  alt="Perfume collection"
+                />
+                <span>Signature scents</span>
+              </a>
+              <a href="#shop" className="collection-panel-card reveal">
+                <img
+                  src={imagePath("images/riggs-body-sprays.jpeg")}
+                  alt="Body sprays"
+                />
+                <span>Daily freshness</span>
+              </a>
+            </div>
+          )}
+
+          {activeCollection === "windows" && (
+            <div className="collection-window-grid">
+              <a href="#shop" className="collection-window-main reveal">
+                <img
+                  src={imagePath("images/botanical-bedding.jpeg")}
+                  alt="Botanical bedding"
+                />
+                <span>Soft home pieces</span>
+              </a>
+              <div className="collection-window-stack">
+                <a href="#shop" className="collection-window-small reveal">
+                  <img
+                    src={imagePath("images/al-dargam-perfumes.jpeg")}
+                    alt="Perfume collection"
+                  />
+                  <span>Gifting scents</span>
+                </a>
+                <a href="#shop" className="collection-window-small reveal">
+                  <img
+                    src={imagePath("images/gold-leaf-bedding.jpeg")}
+                    alt="Gold leaf bedding"
+                  />
+                  <span>Elegant sets</span>
+                </a>
+              </div>
+            </div>
+          )}
         </section>
 
         <section className="section shop-section" id="shop">
