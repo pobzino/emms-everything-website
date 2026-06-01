@@ -1243,19 +1243,71 @@ button {
   line-height: 1.02;
 }
 
+.section-option-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 28px 0 30px;
+  padding: 10px 12px 10px 16px;
+  background: rgba(16, 16, 15, 0.86);
+  border: 1px solid rgba(245, 239, 228, 0.14);
+  border-radius: 999px;
+}
+
+.section-option-bar > span {
+  color: var(--gold-light);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.section-option-bar > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.section-option-bar button {
+  min-height: 34px;
+  padding: 0 13px;
+  color: rgba(245, 239, 228, 0.76);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.section-option-bar button.active,
+.section-option-bar button:hover {
+  color: #050505;
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+}
+
 .collection-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
   grid-auto-rows: 246px;
   gap: 18px;
-  margin-top: 30px;
+  margin-top: 0;
 }
 
-.collection-tile {
+.collection-tile,
+.collection-strip-card,
+.collection-magazine-card,
+.collection-panel-card,
+.collection-window-main,
+.collection-window-small {
   position: relative;
   min-height: 0;
   overflow: hidden;
   background: #1d1710;
+  border: 1px solid rgba(245, 239, 228, 0.12);
   border-radius: 8px;
   box-shadow: 0 18px 54px rgba(0, 0, 0, 0.34);
 }
@@ -1264,14 +1316,24 @@ button {
   grid-row: span 2;
 }
 
-.collection-tile img {
+.collection-tile img,
+.collection-strip-card img,
+.collection-magazine-card img,
+.collection-panel-card img,
+.collection-window-main img,
+.collection-window-small img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 240ms ease;
 }
 
-.collection-tile::after {
+.collection-tile::after,
+.collection-strip-card::after,
+.collection-magazine-card::after,
+.collection-panel-card::after,
+.collection-window-main::after,
+.collection-window-small::after {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -1282,7 +1344,12 @@ button {
   content: "";
 }
 
-.collection-tile span {
+.collection-tile span,
+.collection-strip-card span,
+.collection-magazine-card span,
+.collection-panel-card span,
+.collection-window-main span,
+.collection-window-small span {
   position: absolute;
   left: 18px;
   bottom: 18px;
@@ -1296,8 +1363,89 @@ button {
 }
 
 .collection-tile:hover img,
+.collection-strip-card:hover img,
+.collection-magazine-card:hover img,
+.collection-panel-card:hover img,
+.collection-window-main:hover img,
+.collection-window-small:hover img,
 .product-card:hover img {
   transform: scale(1.035);
+}
+
+.collection-strip-grid {
+  display: grid;
+  grid-template-columns: 1.08fr 0.96fr 0.96fr 0.96fr;
+  gap: 14px;
+}
+
+.collection-strip-card {
+  height: 390px;
+}
+
+.collection-strip-card:nth-child(1) {
+  height: 430px;
+}
+
+.collection-magazine-grid {
+  display: grid;
+  grid-template-columns: 0.82fr 1.12fr 0.92fr;
+  grid-template-rows: 238px 238px;
+  gap: 16px;
+}
+
+.collection-magazine-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-row: span 2;
+  padding: clamp(24px, 4vw, 42px);
+  background: #10100f;
+  border: 1px solid rgba(245, 239, 228, 0.12);
+  border-radius: 8px;
+}
+
+.collection-magazine-copy h3 {
+  margin: 18px 0 14px;
+  color: var(--ink);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.collection-magazine-copy p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.collection-magazine-card.large {
+  grid-row: span 2;
+}
+
+.collection-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  min-height: 520px;
+}
+
+.collection-panel-card:nth-child(2) {
+  transform: translateY(34px);
+}
+
+.collection-window-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+  gap: 14px;
+  min-height: 520px;
+}
+
+.collection-window-stack {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  min-height: 0;
 }
 
 .shop-heading {
@@ -1781,6 +1929,53 @@ button {
   .contact-section {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .section-option-bar {
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 14px;
+  }
+
+  .section-option-bar > div {
+    justify-content: flex-start;
+  }
+
+  .collection-strip-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .collection-strip-card,
+  .collection-strip-card:nth-child(1) {
+    height: 320px;
+  }
+
+  .collection-magazine-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 280px 280px;
+  }
+
+  .collection-magazine-copy {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+
+  .collection-panel-grid {
+    min-height: 420px;
+  }
+
+  .collection-window-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .collection-window-main {
+    min-height: 390px;
+  }
+
+  .collection-window-stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+    min-height: 220px;
   }
 
   .product-grid {
